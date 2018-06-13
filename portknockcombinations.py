@@ -10,7 +10,7 @@ def main(args):
     args.pop(0)
     paramcheck(args)
 
-    knocklist =  list(permutations(args, len(args)))
+    knocklist =  list(permutations(args))
     command = generate_commands(ip_address, knocklist)
     command = execute_final_scan(command, ip_address)
     execute_command(command)
@@ -26,10 +26,10 @@ def generate_commands(ip_address, knocklist):
         for port in knock:
             if 'u' in port:
                 port = port.replace('u','')
-                command += 'nmap -sU -Pn -p '+str(port)+' '+ip_address+' && '
+                command += 'nmap --max-retries 0 -sU -Pn -p '+str(port)+' '+ip_address+' && '
             else:
-                command += 'nmap -Pn -p '+str(port)+' '+ip_address+' && '
-    return command
+                command += 'nmap --max-retries 0 -Pn -p '+str(port)+' '+ip_address+' && '
+    return command+' sleep 1 && '
 
 def execute_final_scan(command, ip_address):
     return command+'nmap '+ip_address
