@@ -1,5 +1,5 @@
 # portknockcombinations
-The nuclear option for port knocking by trying all combinations from a user-provided list
+The nuclear option for port knocking by trying all combinations from a user-provided list. Pauses for one second between each probe to prevent retransmission caps from being hit
 
 
 usage:
