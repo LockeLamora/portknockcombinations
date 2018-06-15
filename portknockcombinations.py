@@ -25,6 +25,7 @@ def doscan(ip_address, knocklist):
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     for knock in knocklist:
         for port in knock:
+            print port
             if 'u' in port:
                 port = port.replace('u','')
                 try:
