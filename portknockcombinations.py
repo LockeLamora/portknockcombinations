@@ -1,7 +1,7 @@
 import sys
 from itertools import permutations
 import socket
-import os
+import os, time
 
 def main(args):
     paramcheck(args)
@@ -36,6 +36,7 @@ def doscan(ip_address, knocklist):
                     tcp.connect((ip_address, int(port)))
                 except:
                     pass
+            time.sleep(1)
 
 def execute_final_scan(ip_address):
     os.system('nmap '+ip_address)
